@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MentorView - Mock Interview & Mentoring Platform</title>
+  <style>
+    body { font-family: sans-serif; margin: 0; padding: 0; }
+    header { background: #1e3a8a; color: white; padding: 20px; text-align: center; }
+    nav { background: #f1f1f1; padding: 10px; text-align: center; }
+    nav a { margin: 0 15px; text-decoration: none; color: #1e3a8a; font-weight: bold; }
+    section { padding: 40px 20px; max-width: 900px; margin: auto; }
+    h2 { color: #1e3a8a; }
+    footer { background: #1e3a8a; color: white; text-align: center; padding: 10px; }
+    #subscribe-btn { background-color: #1e3a8a; color: white; padding: 12px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; }
+    #subscribe-btn:hover { background-color: #2c4baf; }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="logo.png" alt="MentorView Logo" style="height: 60px;">
+  <h1>MentorView</h1>
+  <p>Real Interview Experience Before the Real Job Hunt Begins</p>
+</header>
+
+<nav>
+  <a href="#about">About Us</a>
+  <a href="#talentpool">Join Talent Pool</a>
+  <a href="#contact">Contact</a>
+  <a href="#privacy">Privacy</a>
+  <a href="#terms">Terms</a>
+  <a href="#refund">Refund Policy</a>
+</nav>
+
+<section id="about">
+  <h2>About MentorView</h2>
+  <p>MentorView is a mock interview and review platform for freshers in iOS, Android, React Native, Flutter, and Python development who are preparing to enter the job market. Our experienced mentors simulate real interview scenarios and provide detailed feedback.</p>
+  <p>Each fresher gets:</p>
+  <ul>
+    <li>🧠 One 1-hour candidate review and mentoring session</li>
+    <li>🎤 Three 1-hour mock interviews with theory + live coding test</li>
+    <li>📄 Comprehensive feedback and performance evaluation</li>
+  </ul>
+  <p>Candidates who perform well are invited to join our exclusive <strong>MentorView Talent Pool</strong> for placement assistance.</p>
+</section>
+
+<section id="talentpool">
+  <h2>Join the MentorView Talent Pool</h2>
+  <p>Qualify through our interview process and get referred to hiring partners actively looking for mobile and software developers. Get your first break with confidence!</p>
+  <p><button id="subscribe-btn">Subscribe for ₹5000</button></p>
+</section>
+
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p>Email: <a href="mailto:support@mentorview.in">support@mentorview.in</a><br>
+     WhatsApp: +91-XXXXXXXXXX</p>
+</section>
+
+<section id="privacy">
+  <h2>Privacy Policy</h2>
+  <p>Your data is confidential and will not be shared with third parties without consent. We comply with standard data protection policies.</p>
+</section>
+
+<section id="terms">
+  <h2>Terms and Conditions</h2>
+  <p>All sessions are booked on a first-come, first-serve basis. Participation does not guarantee placement but offers skill enhancement and exposure.</p>
+</section>
+
+<section id="refund">
+  <h2>Refund Policy</h2>
+  <p>Refunds are applicable only in case of mentor unavailability or technical issues from our side. Requests must be raised within 24 hours of the issue.</p>
+</section>
+
+<footer>
+  <p>&copy; 2025 MentorView.in. All Rights Reserved.</p>
+</footer>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+  document.getElementById('subscribe-btn').onclick = function () {
+    var options = {
+      "key": "YOUR_RAZORPAY_KEY", // Replace with your Razorpay Key ID
+      "amount": 500000, // 5000 INR in paise
+      "currency": "INR",
+      "name": "MentorView",
+      "description": "Mentoring + Mock Interview Package",
+      "image": "https://mentorview.in/logo.png",
+      "handler": function (response) {
+        alert("✅ Payment successful! Payment ID: " + response.razorpay_payment_id);
+        window.location.href = "https://forms.gle/YOUR_GOOGLE_FORM_LINK"; // Replace with your actual form link
+      },
+      "modal": {
+        "ondismiss": function () {
+          alert("❌ Payment cancelled or failed. Please try again to complete your subscription.");
+        }
+      },
+      "prefill": {
+        "name": "",
+        "email": "",
+        "contact": ""
+      },
+      "theme": {
+        "color": "#1e3a8a"
+      }
+    };
+    var rzp = new Razorpay(options);
+    rzp.open();
+  };
+</script>
+
+</body>
+</html>
